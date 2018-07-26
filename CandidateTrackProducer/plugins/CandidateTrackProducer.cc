@@ -84,7 +84,7 @@ CandidateTrackProducer::CandidateTrackProducer (const edm::ParameterSet& iConfig
   generalTracksToken_             = consumes<reco::TrackCollection> (generalTracksTag_);
   gt2pc_                          = consumes<edm::Association<pat::PackedCandidateCollection> > (gt2pcTag_);
   gt2lt_                          = consumes<edm::Association<pat::PackedCandidateCollection> > (gt2ltTag_);
-  gt2it_                          = consumes<edm::Association<vector<pat::IsolatedTrack> > >    (gt2itTag_);
+  //gt2it_                          = consumes<edm::Association<vector<pat::IsolatedTrack> > >    (gt2itTag_);
 
 }
 
@@ -165,8 +165,8 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
   iEvent.getByToken(gt2lt_, gt2lt);
 
   // generalTracks-->isolatedTracks association
-  edm::Handle<edm::Association<vector<pat::IsolatedTrack> > >    gt2it;
-  iEvent.getByToken(gt2it_, gt2it);
+  //edm::Handle<edm::Association<vector<pat::IsolatedTrack> > >    gt2it;
+  //iEvent.getByToken(gt2it_, gt2it);
 
 
 
@@ -180,6 +180,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_rhoPUCorrCalo(*rhoCaloHandle);
     candTrack.set_rhoPUCorrCentralCalo(*rhoCentralCaloHandle);
 
+    cout << "Calculating calo"
     const CaloEnergy &caloE_0p5 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.5);
     candTrack.set_caloNewEMDRp5 (caloE_0p5.eEM);
     candTrack.set_caloNewHadDRp5 (caloE_0p5.eHad);
@@ -189,7 +190,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
 
     candTracks->push_back (candTrack);
-    if (track.pt() > 55) {
+    if (false){//track.pt() > 55) {
     //cout << "Equivalently printing for every CANDtrack from within CTProducer";
     //cout << "\tCandidate w/ pt=" << track.pt() << ", eta=" << track.eta() << ", phi=" << track.phi() << endl;
     //cout << "----" << generalTracks->size() << " tracks in this event" << endl;
@@ -283,22 +284,34 @@ const CaloEnergy
 CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const EBRecHitCollection &EBRecHits, const EERecHitCollection &EERecHits, const HBHERecHitCollection &HBHERecHits, const double dR) const
 {
   double eEM = 0;
+  bool print = (dR < 0.4);
+  if (print) cout << "adding rec hits in EM:" << endl;
   for (const auto &hit : EBRecHits) {
     if (insideCone(candTrack, hit.detid(), dR)) {
       eEM += hit.energy();
+      if (print) cout << "\t EBRecHit w/ energy = " << hit.energy() << endl;
     }
   }
   for (const auto &hit : EERecHits) {
     if (insideCone(candTrack, hit.detid(), dR)) {
       eEM += hit.energy();
+      if (print) cout << "\t EERecHit w/ energy = " << hit.energy() << endl;
     }
   }
 
+  if (print) cout << "adding rec hits in Had:" << endl;
   double eHad = 0;
-  for (const auto &hit : HBHERecHits)
-    if (insideCone(candTrack, hit.detid(), dR))
+  for (const auto &hit : HBHERecHits){
+    if (insideCone(candTrack, hit.detid(), dR)){
       eHad += hit.energy();
+      if (print) cout << "\t HBHERecHit w/ energy = " << hit.energy() << endl;
+    }
+  }
 
+  if (print) {
+    cout << "EMCalo total:  " << eEM << endl;
+    cout << "HadCalo total: " << eHad << endl;
+  }
   return {eEM, eHad};
 }
 
