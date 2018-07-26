@@ -189,6 +189,13 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_caloNewEMDRp3 (caloE_0p3.eEM);
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
 
+    cout << "caloNewEMDRp5():\t"  << candTrack.caloNewEMDRp5()  << endl;
+    cout << "caloNewHadDRp5():\t" << candTrack.caloNewHadDRp5() << endl;
+    cout << "caloNewDRp5():\t"    << candTrack.caloNewDRp5()    << endl;
+    cout << "caloNewEMDRp3():\t"  << candTrack.caloNewEMDRp3()  << endl;
+    cout << "caloNewHadDRp3():\t" << candTrack.caloNewHadDRp3() << endl;
+    cout << "caloNewDRp3():\t"    << candTrack.caloNewDRp3()    << endl;
+
     candTracks->push_back (candTrack);
     if (false){//track.pt() > 55) {
     //cout << "Equivalently printing for every CANDtrack from within CTProducer";
