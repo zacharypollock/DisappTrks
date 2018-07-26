@@ -1337,6 +1337,6 @@ cutTrkMatchedCandidateTrack = cms.PSet(
 
 curTrkMatchedCandidateTrackNonnull = cms.PSet(
     inputCollection = cms.vstring("tracks"),
-    cutString = cms.vstring("matchedCandidateTrack.isNonnull"),
+    cutString = cms.string("matchedCandidateTrack.isNonnull"),
     numberRequired = cms.string(">= 1"),
 )
