@@ -344,7 +344,7 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
     throw cms::Exception("FatalError") << "Unkown or not implemented rho type requested, type:" << rhoType;
   }
   
-  if (dR < 0.3 && rhoType == CentralCalo && caloType==Sum){
+  if (dR < 0.4 && rhoType == CentralCalo && caloType==Sum){
     cout << caloNewEMDRp5()  << "caloNewEMDRp5()"  << endl;
     cout << caloNewHadDRp5() << "caloNewHadDRp5()" << endl;
     cout << caloNewDRp5()    << "caloNewDRp5()"    << endl;
@@ -357,18 +357,22 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
   double rawCaloTot = 0.0;
   switch (caloType) {
   case Sum:
+    cout << "inside Sum" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewDRp3();
     } else rawCaloTot = caloNewDRp5();
   case EM:
+    cout << "inside EM" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewEMDRp3();
     } else rawCaloTot = caloNewEMDRp5();
   case Had:
+    cout << "inside Had" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewHadDRp3();
     } else rawCaloTot = caloNewHadDRp5();  
   }
+  cout << endl;
   
   double caloCorr = rho * TMath::Pi() * dR * dR;  // Define effective area as pi*r^2, where r is radius of DeltaR cone.
   double caloTotNoPU = TMath::Max(0., rawCaloTot - caloCorr);
