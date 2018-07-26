@@ -188,77 +188,77 @@ IsolatedTrackCandidateTrackHistograms = cms.PSet(
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustEMVsIsoMatchedCaloJetEmEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetEmEnergy [GeV];CandidateTrack caloNewNoPUDRp5CentralCaloJustEM [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetEmEnergy", "matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustEm")
         ),
         #cand calo sum VS iso calo em
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoMatchedCaloJetEmEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetEmEnergy [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetEmEnergy", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         #cand calo had VS iso calo had
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustHadVsIsoMatchedCaloJetHadEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetHadEnergy [GeV];CandidateTrack caloNewNoPUDRp5CentralCaloJustHad [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetHadEnergy", "matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustHad")
         ),
         #cand calo sum VS iso calo had
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoMatchedCaloJetHadEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetHadEnergy [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetHadEnergy", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         #cand calo sum VS iso calo sum
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoMatchedCaloJetEmPlusHadEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetEmPlusHadEnergy [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetEmEnergy + matchedCaloJetHadEnergy", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         #single variable calo plots
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCalo"),
             title = cms.string(";CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustEm"),
             title = cms.string(";CandidateTrack caloNewNoPUDRp5CentralCaloJustEm [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustEm")
         ),
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustHad"),
             title = cms.string(";CandidateTrack caloNewNoPUDRp5CentralCaloJustHad [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustHad")
         ),
         cms.PSet (
             name = cms.string("IsoMatchedCaloJetEmPlusHadEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetEmPlusHadEnergy [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetEmEnergy + matchedCaloJetHadEnergy")
         ),
         cms.PSet (
             name = cms.string("IsoMatchedCaloJetEmEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetEmEnergy [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetEmEnergy")
         ),
         cms.PSet (
             name = cms.string("IsoMatchedCaloJetHadEnergy"),
             title = cms.string(";IsolatedTrack matchedCaloJetHadEnergy [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("matchedCaloJetHadEnergy")
         ),
 
@@ -270,40 +270,40 @@ IsolatedTrackCandidateTrackHistograms = cms.PSet(
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustHadVsIsoTrkMatchedNeutralHadIso"),
             title = cms.string(";IsolatedTrack neutralHadIso [GeV];CandidateTrack caloNewNoPUDRp5CentralCaloJustHad [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustHad")
         ),
         #cand hadron+EM calo vs isoTrk PF neutral hadron isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoTrkMatchedNeutralHadIso"),
             title = cms.string(";IsolatedTrack neutralHadIso [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         #cand EM calo vs isoTrk PF photon isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloJustEMVsIsoTrkMatchedPhotonIso"),
             title = cms.string(";IsolatedTrack photonIso [GeV];CandidateTrack caloNewNoPUDRp5CentralCaloJustEM [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso", "matchedCandidateTrack.caloNewNoPUDRp5CentralCaloJustEm")
         ),
         #cand hadron+EM calo vs isoTrk PF photon isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoTrkMatchedPhotonIso"),
             title = cms.string(";IsolatedTrack photonIso [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         #cand hadron+EM calo vs isoTrk PF photon + neutral had isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp5CentralCaloVsIsoTrkMatchedPhotonAndNeutralHadIso"),
             title = cms.string(";IsolatedTrack photonIso + neutralHadronIso [GeV];CandidateTrack caloNewNoPUDRp5CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso + pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp5CentralCalo")
         ),
         
@@ -313,40 +313,40 @@ IsolatedTrackCandidateTrackHistograms = cms.PSet(
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp3CentralCaloJustHadVsIsoTrkMatchedNeutralHadIso"),
             title = cms.string(";IsolatedTrack neutralHadIso [GeV];CandidateTrack caloNewNoPUDRp3CentralCaloJustHad [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp3CentralCaloJustHad")
         ),
         #cand hadron+EM calo vs isoTrk PF neutral hadron isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp3CentralCaloVsIsoTrkMatchedNeutralHadIso"),
             title = cms.string(";IsolatedTrack neutralHadIso [GeV];CandidateTrack caloNewNoPUDRp3CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp3CentralCalo")
         ),
         #cand EM calo vs isoTrk PF photon isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp3CentralCaloJustEMVsIsoTrkMatchedPhotonIso"),
             title = cms.string(";IsolatedTrack photonIso [GeV];CandidateTrack caloNewNoPUDRp3CentralCaloJustEM [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso", "matchedCandidateTrack.caloNewNoPUDRp3CentralCaloJustEm")
         ),
         #cand hadron+EM calo vs isoTrk PF photon isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp3CentralCaloVsIsoTrkMatchedPhotonIso"),
             title = cms.string(";IsolatedTrack photonIso [GeV];CandidateTrack caloNewNoPUDRp3CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso", "matchedCandidateTrack.caloNewNoPUDRp3CentralCalo")
         ),
         #cand hadron+EM calo vs isoTrk PF photon + neutral had isolation
         cms.PSet (
             name = cms.string("candCaloNewNoPUDRp3CentralCaloVsIsoTrkMatchedPhotonAndNeutralHadIso"),
             title = cms.string(";IsolatedTrack photonIso + neutralHadronIso [GeV];CandidateTrack caloNewNoPUDRp3CentralCalo [GeV]"),
-            binsX = cms.untracked.vdouble(100, 0, 4),
-            binsY = cms.untracked.vdouble(100, 0, 4),
+            binsX = cms.untracked.vdouble(400, 0, 16),
+            binsY = cms.untracked.vdouble(400, 0, 16),
             inputVariables = cms.vstring("pfIsolationDR03_.photonIso + pfIsolationDR03_.neutralHadronIso", "matchedCandidateTrack.caloNewNoPUDRp3CentralCalo")
         ),
 
