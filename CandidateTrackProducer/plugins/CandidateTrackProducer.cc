@@ -259,7 +259,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
         if (isInPackedCands) isolationPF += gentk.pt();
         if (isInPackedCands || isInLostTracks) isolationPFLost += gentk.pt();
         if (isInPackedCands || isInLostTracks || isInIsolatedTracks) isolationPFLostIso += gentk.pt();
-        isolationAllGen += gentk.pt();
+         if (fabs( track.dz(gentk.vertex())) <= 3.0 * hypot (track.dzError (), gentk.dzError ())) isolationAllGen += gentk.pt();
       }
 
     }
