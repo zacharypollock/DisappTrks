@@ -179,6 +179,10 @@ candTrkCuts = isoTrkCuts + leptonVetoes
 
 ##########################################################################
 
+candTrkSelectionRequireMatch = copy.deepcopy(candTrkSelection)
+candTrkSelectionRequireMatch.name = cms.string("candTrkSelectionRequireMatch")
+addSingleCut(candTrkSelectionRequireMatch.cuts, curTrkMatchedCandidateTrackNonnull, cutTrkTauHadVeto)
+
 candTrkLoose = copy.deepcopy(isoTrkSelection)
 candTrkLoose.name = cms.string("CandTrkLoose")
 cutsToAdd = [
