@@ -344,7 +344,7 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
     throw cms::Exception("FatalError") << "Unkown or not implemented rho type requested, type:" << rhoType;
   }
   
-  bool print = (dR < 0.4 && rhoType == CentralCalo);// && caloType==Sum);
+  bool print = false;//(dR < 0.4 && rhoType == CentralCalo);// && caloType==Sum);
   if (print){
     //cout << "caloNewEMDRp5():  " << caloNewEMDRp5()  << endl;
     //cout << "caloNewHadDRp5(): " << caloNewHadDRp5() << endl;

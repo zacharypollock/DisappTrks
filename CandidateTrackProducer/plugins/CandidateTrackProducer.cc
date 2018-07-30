@@ -175,12 +175,13 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     if (track.pt () < candMinPt_)
       continue;
 
+    bool print = false;
     CandidateTrack candTrack(track, *tracks, *electrons, *muons, *taus, *beamspot, *vertices, conversions, *PackedCandidates, *LostTracks, *IsolatedTracks, *gt_h, *gt2pc, *gt2lt);
     candTrack.set_rhoPUCorr(*rhoHandle);
     candTrack.set_rhoPUCorrCalo(*rhoCaloHandle);
     candTrack.set_rhoPUCorrCentralCalo(*rhoCentralCaloHandle);
 
-    cout << endl << "===============================" << endl << "Calculating calo for track w/ pt=" << track.pt() << endl;
+    if (print) cout << endl << "===============================" << endl << "Calculating calo for track w/ pt=" << track.pt() << endl;
     const CaloEnergy &caloE_0p5 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.5);
     candTrack.set_caloNewEMDRp5 (caloE_0p5.eEM);
     candTrack.set_caloNewHadDRp5 (caloE_0p5.eHad);
@@ -189,16 +190,18 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_caloNewEMDRp3 (caloE_0p3.eEM);
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
 
-    cout << "-0-0-0-0-0-0-0-" << endl;
-    cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm();
-    cout << endl;
-    cout << "-1-1-1-1-1-1-1-" << endl;
-    cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad();
-    cout << endl;
-    cout << "-2-2-2-2-2-2-2-" << endl;
-    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo();
-    cout << endl;
-    cout << "-3-3-3-3-3-3-3-" << endl;
+    if (print){
+      cout << "-0-0-0-0-0-0-0-" << endl;
+      cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm();
+      cout << endl;
+      cout << "-1-1-1-1-1-1-1-" << endl;
+      cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad();
+      cout << endl;
+      cout << "-2-2-2-2-2-2-2-" << endl;
+      cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo();
+      cout << endl;
+      cout << "-3-3-3-3-3-3-3-" << endl;
+    }
 /*
     cout << "caloNewEMDRp5():\t"  << candTrack.caloNewEMDRp5()  << endl;
     cout << "caloNewHadDRp5():\t" << candTrack.caloNewHadDRp5() << endl;
@@ -290,7 +293,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     if (addedByGenTrk > 0.01) cout << "Isolation added by GeneralTracks = " << addedByGenTrk << endl;
     //cout << endl;
     }
-    cout << "==============================" << endl;
+    if (print) cout << "==============================" << endl;
   }
 
   // save the vector
@@ -327,7 +330,7 @@ CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const E
     }
   }
   
-  bool print2 = (dR < 0.4);
+  bool print2 = false;//(dR < 0.4);
   if (print2) {
     cout << "EMCalo total:  " << eEM << endl;
     cout << "HadCalo total: " << eHad << endl;
