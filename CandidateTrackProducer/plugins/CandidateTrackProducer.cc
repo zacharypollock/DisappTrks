@@ -295,7 +295,7 @@ const CaloEnergy
 CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const EBRecHitCollection &EBRecHits, const EERecHitCollection &EERecHits, const HBHERecHitCollection &HBHERecHits, const double dR) const
 {
   double eEM = 0;
-  bool print = false;//(dR < 0.4);
+  bool print = (dR < 0.4);
   if (print) cout << "adding rec hits in EM:" << endl;
   for (const auto &hit : EBRecHits) {
     if (insideCone(candTrack, hit.detid(), dR)) {

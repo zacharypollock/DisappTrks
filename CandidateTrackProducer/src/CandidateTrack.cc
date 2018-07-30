@@ -344,30 +344,31 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
     throw cms::Exception("FatalError") << "Unkown or not implemented rho type requested, type:" << rhoType;
   }
   
-  if (dR < 0.4 && rhoType == CentralCalo && caloType==Sum){
-    cout << caloNewEMDRp5()  << "caloNewEMDRp5()"  << endl;
-    cout << caloNewHadDRp5() << "caloNewHadDRp5()" << endl;
-    cout << caloNewDRp5()    << "caloNewDRp5()"    << endl;
-    cout << caloNewEMDRp3()  << "caloNewEMDRp3()"  << endl;
-    cout << caloNewHadDRp3() << "caloNewHadDRp3()" << endl;
-    cout << caloNewDRp3()    << "caloNewDRp3()"    << endl;
+  bool print = (dR < 0.4 && rhoType == CentralCalo);// && caloType==Sum);
+  if (print){
+    cout << "caloNewEMDRp5():  " << caloNewEMDRp5()  << endl;
+    cout << "caloNewHadDRp5(): " << caloNewHadDRp5() << endl;
+    cout << "caloNewDRp5():    " << caloNewDRp5()    << endl;
+    cout << "caloNewEMDRp3():  " << caloNewEMDRp3()  << endl;
+    cout << "caloNewHadDRp3(): " << caloNewHadDRp3() << endl;
+    cout << "caloNewDRp3():    " << caloNewDRp3()    << endl;
   }
 
 
   double rawCaloTot = 0.0;
   switch (caloType) {
   case Sum:
-    cout << "inside Sum" << endl;
+    if (print) cout << "inside Sum" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewDRp3();
     } else rawCaloTot = caloNewDRp5();
   case EM:
-    cout << "inside EM" << endl;
+    if (print) cout << "inside EM" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewEMDRp3();
     } else rawCaloTot = caloNewEMDRp5();
   case Had:
-    cout << "inside Had" << endl;
+    if (print) cout << "inside Had" << endl;
     if (dR < 0.4) {  // Only treat two cases:  0.5 and 0.3.
       rawCaloTot = caloNewHadDRp3();
     } else rawCaloTot = caloNewHadDRp5();  
