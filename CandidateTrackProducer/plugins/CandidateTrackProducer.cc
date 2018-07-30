@@ -188,6 +188,10 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     const CaloEnergy &caloE_0p3 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.3);
     candTrack.set_caloNewEMDRp3 (caloE_0p3.eEM);
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
+
+    cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm()  << endl;
+    cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad() << endl;
+    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo()        << endl;
 /*
     cout << "caloNewEMDRp5():\t"  << candTrack.caloNewEMDRp5()  << endl;
     cout << "caloNewHadDRp5():\t" << candTrack.caloNewHadDRp5() << endl;
