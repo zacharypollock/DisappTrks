@@ -372,6 +372,7 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
       rawCaloTot = caloNewHadDRp3();
     } else rawCaloTot = caloNewHadDRp5();  
   }
+  cout << "rawCaloTot=" << rawCaloTot << endl;
   cout << endl;
   
   double caloCorr = rho * TMath::Pi() * dR * dR;  // Define effective area as pi*r^2, where r is radius of DeltaR cone.
