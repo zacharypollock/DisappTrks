@@ -180,7 +180,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_rhoPUCorrCalo(*rhoCaloHandle);
     candTrack.set_rhoPUCorrCentralCalo(*rhoCentralCaloHandle);
 
-    cout << "Calculating calo for track w/ pt=" << track.pt() << endl;
+    cout << endl << "===============================" << endl << "Calculating calo for track w/ pt=" << track.pt() << endl;
     const CaloEnergy &caloE_0p5 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.5);
     candTrack.set_caloNewEMDRp5 (caloE_0p5.eEM);
     candTrack.set_caloNewHadDRp5 (caloE_0p5.eHad);
@@ -191,7 +191,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
 
     cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm()  << endl;
     cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad() << endl;
-    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo()        << endl;
+    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo()        << endl << endl;
 /*
     cout << "caloNewEMDRp5():\t"  << candTrack.caloNewEMDRp5()  << endl;
     cout << "caloNewHadDRp5():\t" << candTrack.caloNewHadDRp5() << endl;
@@ -283,6 +283,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     if (addedByGenTrk > 0.01) cout << "Isolation added by GeneralTracks = " << addedByGenTrk << endl;
     //cout << endl;
     }
+    cout << "==============================" << endl;
   }
 
   // save the vector
@@ -295,7 +296,7 @@ const CaloEnergy
 CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const EBRecHitCollection &EBRecHits, const EERecHitCollection &EERecHits, const HBHERecHitCollection &HBHERecHits, const double dR) const
 {
   double eEM = 0;
-  bool print = (dR < 0.4);
+  bool print = false;//(dR < 0.4);
   if (print) cout << "adding rec hits in EM:" << endl;
   for (const auto &hit : EBRecHits) {
     if (insideCone(candTrack, hit.detid(), dR)) {
@@ -318,8 +319,9 @@ CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const E
       if (print) cout << "\t HBHERecHit w/ energy = " << hit.energy() << endl;
     }
   }
-
-  if (print) {
+  
+  bool print2 = true;
+  if (print2) {
     cout << "EMCalo total:  " << eEM << endl;
     cout << "HadCalo total: " << eHad << endl;
   }
