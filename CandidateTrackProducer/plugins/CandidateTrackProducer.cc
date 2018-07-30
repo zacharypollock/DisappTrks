@@ -189,9 +189,16 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_caloNewEMDRp3 (caloE_0p3.eEM);
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
 
-    cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm()  << endl;
-    cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad() << endl;
-    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo()        << endl << endl;
+    cout << "-0-0-0-0-0-0-0-" << endl;
+    cout << "caloNewNoPUDRp3CentralCaloJustEm:  " << candTrack.caloNewNoPUDRp3CentralCaloJustEm();
+    cout << endl;
+    cout << "-1-1-1-1-1-1-1-" << endl;
+    cout << "caloNewNoPUDRp3CentralCaloJustHad: " << candTrack.caloNewNoPUDRp3CentralCaloJustHad();
+    cout << endl;
+    cout << "-2-2-2-2-2-2-2-" << endl;
+    cout << "caloNewNoPUDRp3CentralCaloBOth:    " << candTrack.caloNewNoPUDRp3CentralCalo();
+    cout << endl;
+    cout << "-3-3-3-3-3-3-3-" << endl;
 /*
     cout << "caloNewEMDRp5():\t"  << candTrack.caloNewEMDRp5()  << endl;
     cout << "caloNewHadDRp5():\t" << candTrack.caloNewHadDRp5() << endl;
@@ -320,7 +327,7 @@ CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const E
     }
   }
   
-  bool print2 = true;
+  bool print2 = (dR < 0.4);
   if (print2) {
     cout << "EMCalo total:  " << eEM << endl;
     cout << "HadCalo total: " << eHad << endl;

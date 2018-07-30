@@ -346,9 +346,9 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
   
   bool print = (dR < 0.4 && rhoType == CentralCalo);// && caloType==Sum);
   if (print){
-    cout << "caloNewEMDRp5():  " << caloNewEMDRp5()  << endl;
-    cout << "caloNewHadDRp5(): " << caloNewHadDRp5() << endl;
-    cout << "caloNewDRp5():    " << caloNewDRp5()    << endl;
+    //cout << "caloNewEMDRp5():  " << caloNewEMDRp5()  << endl;
+    //cout << "caloNewHadDRp5(): " << caloNewHadDRp5() << endl;
+    //cout << "caloNewDRp5():    " << caloNewDRp5()    << endl;
     cout << "caloNewEMDRp3():  " << caloNewEMDRp3()  << endl;
     cout << "caloNewHadDRp3(): " << caloNewHadDRp3() << endl;
     cout << "caloNewDRp3():    " << caloNewDRp3()    << endl;
@@ -373,8 +373,7 @@ CandidateTrack::caloTotNoPU (double dR, RhoType rhoType, CaloType caloType) cons
       rawCaloTot = caloNewHadDRp3();
     } else rawCaloTot = caloNewHadDRp5();  
   }
-  cout << "rawCaloTot=" << rawCaloTot << endl;
-  cout << endl;
+  if (print) cout << "rawCaloTot=" << rawCaloTot << endl;
   
   double caloCorr = rho * TMath::Pi() * dR * dR;  // Define effective area as pi*r^2, where r is radius of DeltaR cone.
   double caloTotNoPU = TMath::Max(0., rawCaloTot - caloCorr);
