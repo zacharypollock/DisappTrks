@@ -322,7 +322,22 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
         //print stuff about the nearest-by CaloJet
         if (true){
           //print stuff out about cJet
-          cout << "\tCaloJet Info:" << endl;
+          cout << "Jet p/px/py/pz/pt: " << cJet.p() << '/' << cJet.px () << '/' << cJet.py() << '/' << cJet.pz() << '/' << cJet.pt() << endl;
+          cout << "    eta/phi: " << cJet.eta () << '/' << cJet.phi () << endl;
+          cout << "    # of constituents: " << cJet.nConstituents () << endl;
+          cout << "    Constituents:" << endl;
+          for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
+            Constituent constituent = cJet.daughterPtr (index); // deref
+            if (constituent.isNonnull()) {
+              cout << "      #" << index << " p/pt/eta/phi: ";
+              cout << constituent->p() << '/' << constituent->pt() << '/' << constituent->eta() << '/' << constituent->phi();
+              cout << "    productId/index: " << constituent.id() << '/' << constituent.key() << endl;
+            }
+            else {
+              out << "      #" << index << " constituent is not available in the event"  << std::endl;
+            }
+          }
+          cout << "  CaloJet Info:" << endl;
           cout << "      energy fractions em/had: " << cJet.emEnergyFraction () << '/' << cJet.energyFractionHadronic () << endl;
           cout << "      em energy in EB/EE/HF: " << cJet.emEnergyInEB() << '/' << cJet.emEnergyInEE() << '/' << cJet.emEnergyInHF() << endl;
           cout << "      had energy in HB/HO/HE/HF: " << cJet.hadEnergyInHB() << '/' << cJet.hadEnergyInHO() << '/' << cJet.hadEnergyInHE() << '/' << cJet.hadEnergyInHF() << endl;
