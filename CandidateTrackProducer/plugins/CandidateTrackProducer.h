@@ -103,6 +103,6 @@ class CandidateTrackProducer : public edm::EDFilter {
       edm::EDGetTokenT<reco::CaloJetCollection>                           caloJetsToken_;
 
   edm::ESHandle<CaloGeometry> caloGeometry_;
-  bool insideCone(const CandidateTrack &, const DetId &, const double) const;
+  bool insideCone(const CandidateTrack &, const DetId &, const double, const bool = false) const;
   const GlobalPoint getPosition( const DetId &) const;
 };

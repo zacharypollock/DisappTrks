@@ -178,7 +178,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     if (track.pt () < candMinPt_)
       continue;
 
-    bool print = false;
+    bool print = true;
     CandidateTrack candTrack(track, *tracks, *electrons, *muons, *taus, *beamspot, *vertices, conversions, *PackedCandidates, *LostTracks, *IsolatedTracks, *gt_h, *gt2pc, *gt2lt);
     candTrack.set_rhoPUCorr(*rhoHandle);
     candTrack.set_rhoPUCorrCalo(*rhoCaloHandle);
@@ -189,7 +189,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     candTrack.set_caloNewEMDRp5 (caloE_0p5.eEM);
     candTrack.set_caloNewHadDRp5 (caloE_0p5.eHad);
 
-    const CaloEnergy &caloE_0p3 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.3);
+    const CaloEnergy &caloE_0p3 = calculateCaloE(candTrack, *EBRecHits, *EERecHits, *HBHERecHits, 0.3, true);
     candTrack.set_caloNewEMDRp3 (caloE_0p3.eEM);
     candTrack.set_caloNewHadDRp3 (caloE_0p3.eHad);
 
@@ -336,10 +336,10 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
 }
 
 const CaloEnergy
-CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const EBRecHitCollection &EBRecHits, const EERecHitCollection &EERecHits, const HBHERecHitCollection &HBHERecHits, const double dR) const
+CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const EBRecHitCollection &EBRecHits, const EERecHitCollection &EERecHits, const HBHERecHitCollection &HBHERecHits, const double dR, const bool print) const
 {
   double eEM = 0;
-  bool print = false;//(dR < 0.4);
+  //bool print = false;//(dR < 0.4);
   if (print) cout << "adding rec hits in EM:" << endl;
   for (const auto &hit : EBRecHits) {
     if (insideCone(candTrack, hit.detid(), dR)) {
@@ -363,8 +363,8 @@ CandidateTrackProducer::calculateCaloE (const CandidateTrack &candTrack, const E
     }
   }
   
-  bool print2 = false;//(dR < 0.4);
-  if (print2) {
+  //bool print2 = false;//(dR < 0.4);
+  if (print) {
     cout << "EMCalo total:  " << eEM << endl;
     cout << "HadCalo total: " << eHad << endl;
   }
