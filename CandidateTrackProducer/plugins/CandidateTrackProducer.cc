@@ -59,7 +59,8 @@ CandidateTrackProducer::CandidateTrackProducer (const edm::ParameterSet& iConfig
   generalTracksTag_             (iConfig.getParameter<edm::InputTag> ("tracks")),
   gt2pcTag_                     (iConfig.getParameter<edm::InputTag> ("packedPFCandidates")),
   gt2ltTag_                     (iConfig.getParameter<edm::InputTag> ("lostTracksCollection")),
-  gt2itTag_                     (iConfig.getParameter<edm::InputTag> ("isolatedTracksCollection")),
+  //gt2itTag_                     (iConfig.getParameter<edm::InputTag> ("isolatedTracksCollection")),
+  caloJetsTag_                  (iConfig.getParameter<edm::InputTag> ("caloJets")),
 
   candMinPt_        (iConfig.getParameter<double> ("candMinPt"))
 {
@@ -84,8 +85,8 @@ CandidateTrackProducer::CandidateTrackProducer (const edm::ParameterSet& iConfig
   generalTracksToken_             = consumes<reco::TrackCollection> (generalTracksTag_);
   gt2pc_                          = consumes<edm::Association<pat::PackedCandidateCollection> > (gt2pcTag_);
   gt2lt_                          = consumes<edm::Association<pat::PackedCandidateCollection> > (gt2ltTag_);
-  //gt2it_                          = consumes<edm::Association<vector<pat::IsolatedTrack> > >    (gt2itTag_);
-
+//gt2it_                          = consumes<edm::Association<vector<pat::IsolatedTrack> > >    (gt2itTag_);
+  caloJetsToken_                  = consumes<reco::CaloJetCollection> (caloJetsTag_);
 }
 
 CandidateTrackProducer::~CandidateTrackProducer ()
@@ -168,6 +169,8 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
   //edm::Handle<edm::Association<vector<pat::IsolatedTrack> > >    gt2it;
   //iEvent.getByToken(gt2it_, gt2it);
 
+  edm::Handle<reco::CaloJetCollection> cJets;
+  iEvent.getByToken(caloJetsToken_, cJets);
 
 
   unique_ptr<vector<CandidateTrack> > candTracks (new vector<CandidateTrack> ());
@@ -294,8 +297,31 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
       //cout << endl;
     }
 
-    if (true){ //IsolatedTrack Calo calculation
-      
+    if (true && print){ //IsolatedTrack Calo calculation
+      cout << endl << "+++++++++++++++++++++++++++++" << endl << "Calculating ISOTRK calo for track w/ pt=" << track.pt() << endl;
+      float nearestDR = 999;
+      int ind = -1;
+      float caloJetEm  = 0.0;
+      float caloJetHad = 0.0;
+      for (unsigned int q=0;  q<cJets->size(); q++){
+        float dRcj = deltaR();
+        if(dRcj < 0.3 && dRcj < nearestDR){
+          nearestDR = dRcj;
+          ind = q;
+        }
+      }
+      if (ind==-1){
+        caloJetEm  = 0.0;
+        caloJetHad = 0.0;
+        cout << "--NO nearby CaloJet: caloJetEm=0 & caloJetHad=0" << endl;
+      } else {
+        cout << "--nearby CaloJet found with dR=" << nearestDR << endl;
+        const reco::CaloJet & cJet = cJets->at(ind);
+        caloJetEm = cJet.emEnergyInEB() + cJet.emEnergyInEE() + cJet.emEnergyInHF();
+        caloJetHad = cJet.hadEnergyInHB() + cJet.hadEnergyInHE() + cJet.hadEnergyInHF();
+        cout << "\tCaloJetEm  = " << caloJetEm  << endl;
+        cout << "\tCaloJetHad = " << caloJetHad << endl;
+      }
 
     }
 

@@ -21,7 +21,8 @@ candidateTrackProducer = cms.EDFilter ("CandidateTrackProducer",
   candMinPt          =  cms.double(10),
   packedPFCandidates       = cms.InputTag  ("packedPFCandidates",        ""),
   lostTracksCollection     = cms.InputTag  ("lostTracks",                ""),
-  isolatedTracksCollection = cms.InputTag  ("isolatedTracks",            "", "PAT")
+  isolatedTracksCollection = cms.InputTag  ("isolatedTracks",            "", "PAT"),
+  caloJets                 = cms.InputTag  ("ak4CaloJets"),
 )
 
 class Collections:

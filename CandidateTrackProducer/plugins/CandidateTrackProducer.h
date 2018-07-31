@@ -76,6 +76,7 @@ class CandidateTrackProducer : public edm::EDFilter {
       edm::InputTag gt2pcTag_;
       edm::InputTag gt2ltTag_;
       edm::InputTag gt2itTag_;
+      edm::InputTag caloJetsTag_;
 
       double candMinPt_;
 
@@ -99,6 +100,7 @@ class CandidateTrackProducer : public edm::EDFilter {
       edm::EDGetTokenT<edm::Association<pat::PackedCandidateCollection> > gt2pc_;
       edm::EDGetTokenT<edm::Association<pat::PackedCandidateCollection> > gt2lt_;
       edm::EDGetTokenT<edm::Association<vector<pat::IsolatedTrack> > >    gt2it_;
+      edm::EDGetTokenT<reco::CaloJetCollection>                           caloJetsToken_;
 
   edm::ESHandle<CaloGeometry> caloGeometry_;
   bool insideCone(const CandidateTrack &, const DetId &, const double) const;
