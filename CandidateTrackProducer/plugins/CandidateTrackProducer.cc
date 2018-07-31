@@ -304,7 +304,8 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
       float caloJetEm  = 0.0;
       float caloJetHad = 0.0;
       for (unsigned int q=0;  q<cJets->size(); q++){
-        float dRcj = deltaR();
+        const reco::CaloJet & cJet0 = cJets->at(q);
+        float dRcj = deltaR(cJet0.eta(), cJet0.phi(), track.eta(), track.phi());
         if(dRcj < 0.3 && dRcj < nearestDR){
           nearestDR = dRcj;
           ind = q;
