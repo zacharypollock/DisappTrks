@@ -33,6 +33,7 @@
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 #include "DataFormats/PatCandidates/interface/IsolatedTrack.h"
 #include "DataFormats/RecoCandidate/interface/RecoCaloTowerCandidate.h"
+#include "DataFormats/JetReco/interface/Jet.h"
 
 using namespace std;
    
@@ -327,14 +328,14 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
           cout << "    Constituents:" << endl;
           for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
-            Constituent constituent = cJet.daughterPtr (index); // deref
+            Jet::Constituent constituent = cJet.daughterPtr (index); // deref
             if (constituent.isNonnull()) {
               cout << "      #" << index << " p/pt/eta/phi: ";
               cout << constituent->p() << '/' << constituent->pt() << '/' << constituent->eta() << '/' << constituent->phi();
               cout << "    productId/index: " << constituent.id() << '/' << constituent.key() << endl;
             }
             else {
-              out << "      #" << index << " constituent is not available in the event"  << std::endl;
+              cout << "      #" << index << " constituent is not available in the event"  << std::endl;
             }
           }
           cout << "  CaloJet Info:" << endl;
