@@ -34,6 +34,7 @@
 #include "DataFormats/PatCandidates/interface/IsolatedTrack.h"
 #include "DataFormats/RecoCandidate/interface/RecoCaloTowerCandidate.h"
 #include "DataFormats/JetReco/interface/Jet.h"
+#include "DataFormats/CaloTowers/interface/CaloTowerDefs.h"
 
 using namespace std;
    
@@ -328,7 +329,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
           cout << "    Constituents:" << endl;
           for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
-            Jet::Constituent constituent = cJet.daughterPtr (index); // deref
+            edm::Ptr<Candidate> constituent = cJet.daughterPtr (index); // deref
             if (constituent.isNonnull()) {
               cout << "      #" << index << " p/pt/eta/phi: ";
               cout << constituent->p() << '/' << constituent->pt() << '/' << constituent->eta() << '/' << constituent->phi();
