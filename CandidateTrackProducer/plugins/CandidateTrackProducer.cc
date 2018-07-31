@@ -329,7 +329,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
           cout << "    Constituents:" << endl;
           for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
-            Constituent constituent = cJet.daughterPtr (index); // deref
+            reco::Jet::Constituent constituent = cJet.daughterPtr (index); // deref
             if (constituent.isNonnull()) {
               cout << "      #" << index << " p/pt/eta/phi: ";
               cout << constituent->p() << '/' << constituent->pt() << '/' << constituent->eta() << '/' << constituent->phi();
