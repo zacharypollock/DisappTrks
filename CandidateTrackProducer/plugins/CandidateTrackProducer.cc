@@ -323,18 +323,18 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
         if (true){
           //print stuff out about cJet
           cout << "\tCaloJet Info:" << endl;
-          cout << "      energy fractions em/had: " << cJet.emEnergyFraction () << '/' << cJet.energyFractionHadronic () << endl
-          cout << "      em energy in EB/EE/HF: " << cJet.emEnergyInEB() << '/' << cJet.emEnergyInEE() << '/' << cJet.emEnergyInHF() << endl
-          cout << "      had energy in HB/HO/HE/HF: " << cJet.hadEnergyInHB() << '/' << cJet.hadEnergyInHO() << '/' << cJet.hadEnergyInHE() << '/' << cJet.hadEnergyInHF() << endl
+          cout << "      energy fractions em/had: " << cJet.emEnergyFraction () << '/' << cJet.energyFractionHadronic () << endl;
+          cout << "      em energy in EB/EE/HF: " << cJet.emEnergyInEB() << '/' << cJet.emEnergyInEE() << '/' << cJet.emEnergyInHF() << endl;
+          cout << "      had energy in HB/HO/HE/HF: " << cJet.hadEnergyInHB() << '/' << cJet.hadEnergyInHO() << '/' << cJet.hadEnergyInHE() << '/' << cJet.hadEnergyInHF() << endl;
           cout << "      constituent towers area: " << cJet.towersArea() << endl;
           cout << "      Towers:" << endl;
           std::vector <CaloTowerPtr > towers = cJet.getCaloConstituents ();
            for (unsigned i = 0; i < towers.size (); i++) {
              if (towers[i].get ()) {
-               out << "      #" << i << " " << *(towers[i]) << endl;
+               cout << "      #" << i << " " << *(towers[i]) << endl;
              }
              else {
-               out << "      #" << i << " tower is not available in the event"  << endl;
+               cout << "      #" << i << " tower is not available in the event"  << endl;
              }
            }   
         }
