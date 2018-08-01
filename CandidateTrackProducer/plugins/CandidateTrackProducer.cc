@@ -327,7 +327,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
           cout << "Jet p/px/py/pz/pt: " << cJet.p() << '/' << cJet.px () << '/' << cJet.py() << '/' << cJet.pz() << '/' << cJet.pt() << endl;
           cout << "    eta/phi: " << cJet.eta () << '/' << cJet.phi () << endl;
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
-          cout << "    Constituents:" << endl;
+          /*cout << "    Constituents:" << endl;
           for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
             reco::Jet::Constituent constituent = cJet.daughterPtr (index); // deref
             if (constituent.isNonnull()) {
@@ -338,7 +338,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
             else {
               cout << "      #" << index << " constituent is not available in the event"  << std::endl;
             }
-          }
+          }*/
           cout << "  CaloJet Info:" << endl;
           cout << "      energy fractions em/had: " << cJet.emEnergyFraction () << '/' << cJet.energyFractionHadronic () << endl;
           cout << "      em energy in EB/EE/HF: " << cJet.emEnergyInEB() << '/' << cJet.emEnergyInEE() << '/' << cJet.emEnergyInHF() << endl;
