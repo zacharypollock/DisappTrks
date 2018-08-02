@@ -324,8 +324,8 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
         //print stuff about the nearest-by CaloJet
         if (true){
           //print stuff out about cJet
-          cout << "Jet p/px/py/pz/pt: " << cJet.p() << '/' << cJet.px () << '/' << cJet.py() << '/' << cJet.pz() << '/' << cJet.pt() << endl;
-          cout << "    eta/phi: " << cJet.eta () << '/' << cJet.phi () << endl;
+          cout << "Jet pt: " << cJet.pz() << '/' << cJet.pt() << endl;
+          //cout << "    eta/phi: " << cJet.eta () << '/' << cJet.phi () << endl;
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
           /*cout << "    Constituents:" << endl;
           for (unsigned index = 0; index < cJet.numberOfDaughters(); index++) {
@@ -344,16 +344,16 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
           cout << "      em energy in EB/EE/HF: " << cJet.emEnergyInEB() << '/' << cJet.emEnergyInEE() << '/' << cJet.emEnergyInHF() << endl;
           cout << "      had energy in HB/HO/HE/HF: " << cJet.hadEnergyInHB() << '/' << cJet.hadEnergyInHO() << '/' << cJet.hadEnergyInHE() << '/' << cJet.hadEnergyInHF() << endl;
           cout << "      constituent towers area: " << cJet.towersArea() << endl;
-          cout << "      Towers:" << endl;
-          std::vector <CaloTowerPtr > towers = cJet.getCaloConstituents ();
-           for (unsigned i = 0; i < towers.size (); i++) {
-             if (towers[i].get ()) {
-               cout << "      #" << i << " " << *(towers[i]) << endl;
-             }
-             else {
-               cout << "      #" << i << " tower is not available in the event"  << endl;
-             }
-           }   
+          //cout << "      Towers:" << endl;
+          //std::vector <CaloTowerPtr > towers = cJet.getCaloConstituents ();
+          // for (unsigned i = 0; i < towers.size (); i++) {
+          //   if (towers[i].get ()) {
+          //     cout << "      #" << i << " " << *(towers[i]) << endl;
+          //   }
+          //   else {
+          //     cout << "      #" << i << " tower is not available in the event"  << endl;
+          //   }
+          // }   
         }
 
         caloJetEm = cJet.emEnergyInEB() + cJet.emEnergyInEE() + cJet.emEnergyInHF();
