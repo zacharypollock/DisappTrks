@@ -169,8 +169,8 @@ metTrig13.triggers.append('HLT_PFMETTypeOne130_PFMHT130_IDTight_v')
 
 caloDiffIsoIsNonzero = copy.deepcopy(candTrkSelection)
 caloDiffIsoIsNonzero.name = cms.string("caloDiffIsoIsNonzero")
-addCuts (caloDiffIsoIsNonzero.cuts, [cutTrkCaloCand0IsoNon])
+addCuts (caloDiffIsoIsNonzero.cuts, [cutTrkCaloCand0, cutTrkCaloIsoNon0])
 
 caloDiffCandIsNonzero = copy.deepcopy(candTrkSelection)
 caloDiffCandIsNonzero.name = cms.string("caloDiffCandIsNonzero")
-addCuts (caloDiffCandIsNonzero.cuts, [cutTrkCaloIso0CandNon])
+addCuts (caloDiffCandIsNonzero.cuts, [cutTrkCaloIso0, cutTrkCaloCandNon0])
