@@ -261,6 +261,13 @@ IsolatedTrackCandidateTrackHistograms = cms.PSet(
             binsX = cms.untracked.vdouble(500, 0, 100),
             inputVariables = cms.vstring("matchedCaloJetHadEnergy")
         ),
+        #cms.PSet (
+        #    name = cms.string("IsoVsCandDRvsCaloDiscrepency"),
+        #    title = cms.string("; #deltaR; Calo Discrepency (GeV)"),
+        #    binsX = cms.untracked.vdouble(500, 0, 100),
+        #    binsY = cms.untracked.vdouble(500, 0, 100),
+        #    inputVariables = cms.vstring("abs((matchedCaloJetEmEnergy + matchedCaloJetHadEnergy) - matchedCandidateTrack.caloNewNoPUDRp5CentralCalo)", "deltaR()")
+        #)
 
         #######################################################
         # Candidate Track Calo vs Isolated Track PF isolation
