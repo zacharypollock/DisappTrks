@@ -161,3 +161,16 @@ metTrig12.triggers.append('HLT_PFMETTypeOne120_PFMHT120_IDTight_v')
 metTrig13 = copy.deepcopy(metTrig12)
 metTrig13.name = cms.string("metTrig13")
 metTrig13.triggers.append('HLT_PFMETTypeOne130_PFMHT130_IDTight_v')
+
+
+###############################################################################
+# selects events where calo is 0 for one object type and non-zero for another
+###############################################################################
+
+caloDiffIsoIsNonzero = copy.deepcopy(candTrkSelection)
+caloDiffIsoIsNonzero.name = cms.string("caloDiffIsoIsNonzero")
+addCuts (caloDiffIsoIsNonzero.cuts, [cutTrkCaloCand0IsoNon])
+
+caloDiffCandIsNonzero = copy.deepcopy(candTrkSelection)
+caloDiffCandIsNonzero.name = cms.string("caloDiffCandIsNonzero")
+addCuts (caloDiffCandIsNonzero.cuts, [cutTrkCaloIso0CandNon])

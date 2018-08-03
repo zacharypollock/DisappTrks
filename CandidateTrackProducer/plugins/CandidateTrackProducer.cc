@@ -180,7 +180,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
     if (track.pt () < candMinPt_)
       continue;
 
-    bool print = true;
+    bool print = false;
     CandidateTrack candTrack(track, *tracks, *electrons, *muons, *taus, *beamspot, *vertices, conversions, *PackedCandidates, *LostTracks, *IsolatedTracks, *gt_h, *gt2pc, *gt2lt);
     candTrack.set_rhoPUCorr(*rhoHandle);
     candTrack.set_rhoPUCorrCalo(*rhoCaloHandle);
@@ -324,7 +324,7 @@ CandidateTrackProducer::filter (edm::Event& iEvent, const edm::EventSetup& iSetu
         //print stuff about the nearest-by CaloJet
         if (true){
           //print stuff out about cJet
-          cout << "Jet pt: " << cJet.pz() << '/' << cJet.pt() << endl;
+          cout << "Jet pt: " << cJet.pt() << endl;
           //cout << "    eta/phi: " << cJet.eta () << '/' << cJet.phi () << endl;
           cout << "    # of constituents: " << cJet.nConstituents () << endl;
           /*cout << "    Constituents:" << endl;

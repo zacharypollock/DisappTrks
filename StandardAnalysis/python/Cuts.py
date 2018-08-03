@@ -674,6 +674,18 @@ cutTrkLargeIsoDiffNeg = cms.PSet(
     numberRequired = cms.string(">= 1"),
     alias = cms.string("large difference in Isolation, candidateTrack >> isolatedtrack"),
 )
+cutTrkCaloIso0CandNon = cms.PSet( #HERE######HERE######HERE#
+    inputCollection = cms.vstring("tracks"),
+    cutString = cms.string("(caloJetEm + caloJetHad)< 0.1 && matchedCandidateTrack.caloNewNoPUDRp3CentralCalo > 2"),
+    numberRequired = cms.string(">= 1"),
+    alias = cms.string("IsolatedTrack Calo = 0 and CandidateTrack Calo != 0"),
+)
+cutTrkCaloCand0IsoNon = cms.PSet(
+    inputCollection = cms.vstring("tracks"),
+    cutString = cms.string("(caloJetEm + caloJetHad) > 2 && matchedCandidateTrack.caloNewNoPUDRp3CentralCalo < 0.1"),
+    numberRequired = cms.string(">= 1"),
+    alias = cms.string("IsolatedTrack Calo != 0 and CandidateTrack Calo = 0"),
+)
 cutTrkD0 = cms.PSet(
     inputCollection = cms.vstring("tracks", "eventvariables"),
     cutString = cms.string("fabs ( " + trackD0WRTPV + " ) < 0.02"),
